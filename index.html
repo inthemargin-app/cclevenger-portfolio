@@ -6,190 +6,226 @@
 <title>Corinne Clevenger</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --cream: #F7F4EF; --parchment: #EDE8DE; --warm-tan: #C9B99A;
-    --rust: #A0522D; --charcoal: #2C2621; --mid-gray: #6B6259;
-    --light-gray: #9E9388; --white: #FDFCF9; --gold: #B8924A;
-    --serif: 'Cormorant Garamond', Georgia, serif;
-    --sans: 'DM Sans', sans-serif;
-  }
-  html { scroll-behavior: smooth; }
-  body { background: var(--cream); color: var(--charcoal); font-family: var(--sans); overflow-x: hidden; line-height: 1.7; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#F7F4EF;--parchment:#EDE8DE;--warm-tan:#C9B99A;
+  --rust:#A0522D;--charcoal:#2C2621;--mid-gray:#6B6259;
+  --light-gray:#9E9388;--white:#FDFCF9;--gold:#B8924A;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--charcoal);font-family:var(--sans);overflow-x:hidden;line-height:1.7}
 
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 48px; display: flex; justify-content: space-between; align-items: center; transition: background 0.4s; }
-  nav.scrolled { background: rgba(247,244,239,0.92); backdrop-filter: blur(12px); border-bottom: 0.5px solid var(--warm-tan); }
-  .nav-logo { font-family: var(--serif); font-size: 18px; font-weight: 500; letter-spacing: 0.04em; color: var(--charcoal); text-decoration: none; }
-  .nav-links { display: flex; gap: 28px; list-style: none; }
-  .nav-links a { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid-gray); text-decoration: none; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--charcoal); }
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;justify-content:space-between;align-items:center;transition:background .4s}
+nav.scrolled{background:rgba(247,244,239,.93);backdrop-filter:blur(12px);border-bottom:.5px solid var(--warm-tan)}
+.nav-logo{font-family:var(--serif);font-size:18px;font-weight:500;letter-spacing:.04em;color:var(--charcoal);text-decoration:none}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mid-gray);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--charcoal)}
 
-  #hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 48px 80px; position: relative; overflow: hidden; }
-  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 70% 30%, rgba(184,146,74,0.07) 0%, transparent 60%), radial-gradient(ellipse 50% 70% at 20% 80%, rgba(160,82,45,0.04) 0%, transparent 50%), var(--cream); }
-  .hero-line-decor { position: absolute; top: 0; left: 48px; bottom: 0; width: 0.5px; background: linear-gradient(to bottom, transparent, var(--warm-tan) 20%, var(--warm-tan) 80%, transparent); opacity: 0.35; }
-  .hero-content { position: relative; z-index: 2; max-width: 860px; }
-  .hero-eyebrow { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rust); margin-bottom: 28px; opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards; }
-  .hero-name { font-family: var(--serif); font-size: clamp(60px, 9vw, 128px); font-weight: 300; line-height: 0.92; color: var(--charcoal); letter-spacing: -0.02em; opacity: 0; animation: fadeUp 1s ease 0.4s forwards; }
-  .hero-name em { font-style: italic; color: var(--rust); }
-  .hero-tagline { margin-top: 40px; font-family: var(--serif); font-size: 19px; font-weight: 300; color: var(--mid-gray); line-height: 1.65; max-width: 540px; opacity: 0; animation: fadeUp 0.8s ease 0.7s forwards; }
-  .hero-cta-row { margin-top: 48px; display: flex; gap: 20px; align-items: center; opacity: 0; animation: fadeUp 0.8s ease 0.9s forwards; }
-  .btn-primary { padding: 13px 30px; background: var(--charcoal); color: var(--cream); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: background 0.2s, transform 0.2s; }
-  .btn-primary:hover { background: var(--rust); transform: translateY(-1px); }
-  .btn-ghost { padding: 13px 30px; background: transparent; color: var(--charcoal); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border: 0.5px solid var(--warm-tan); transition: border-color 0.2s, color 0.2s; }
-  .btn-ghost:hover { border-color: var(--charcoal); color: var(--rust); }
-  .hero-scroll-hint { position: absolute; bottom: 32px; right: 48px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--light-gray); writing-mode: vertical-rl; display: flex; align-items: center; gap: 10px; opacity: 0; animation: fadeIn 1s ease 1.4s forwards; }
-  .hero-scroll-hint::before { content: ''; display: block; width: 0.5px; height: 40px; background: var(--warm-tan); animation: scrollLine 1.8s ease 1.6s infinite; }
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 48px 80px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 70% 30%,rgba(184,146,74,.07) 0%,transparent 60%),radial-gradient(ellipse 50% 70% at 20% 80%,rgba(160,82,45,.04) 0%,transparent 50%),var(--cream)}
+.hero-line{position:absolute;top:0;left:48px;bottom:0;width:.5px;background:linear-gradient(to bottom,transparent,var(--warm-tan) 20%,var(--warm-tan) 80%,transparent);opacity:.35}
+.hero-content{position:relative;z-index:2;max-width:860px}
+.hero-eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--rust);margin-bottom:28px;opacity:0;animation:fadeUp .8s ease .2s forwards}
+.hero-name{font-family:var(--serif);font-size:clamp(60px,9vw,128px);font-weight:300;line-height:.92;color:var(--charcoal);letter-spacing:-.02em;opacity:0;animation:fadeUp 1s ease .4s forwards}
+.hero-name em{font-style:italic;color:var(--rust)}
+.hero-tagline{margin-top:40px;font-family:var(--serif);font-size:19px;font-weight:300;color:var(--mid-gray);line-height:1.65;max-width:540px;opacity:0;animation:fadeUp .8s ease .7s forwards}
+.hero-cta{margin-top:48px;display:flex;gap:20px;opacity:0;animation:fadeUp .8s ease .9s forwards}
+.btn-p{padding:13px 30px;background:var(--charcoal);color:var(--cream);font-size:11px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .2s}
+.btn-p:hover{background:var(--rust);transform:translateY(-1px)}
+.btn-g{padding:13px 30px;background:transparent;color:var(--charcoal);font-size:11px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:.5px solid var(--warm-tan);transition:border-color .2s,color .2s}
+.btn-g:hover{border-color:var(--charcoal);color:var(--rust)}
+.scroll-hint{position:absolute;bottom:32px;right:48px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--light-gray);writing-mode:vertical-rl;display:flex;align-items:center;gap:10px;opacity:0;animation:fadeIn 1s ease 1.4s forwards}
+.scroll-hint::before{content:'';display:block;width:.5px;height:40px;background:var(--warm-tan);animation:scrollLine 1.8s ease 1.6s infinite}
 
-  section { padding: 112px 48px; position: relative; }
-  .section-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rust); margin-bottom: 20px; display: flex; align-items: center; gap: 16px; }
-  .section-label::after { content: ''; flex: 0 0 36px; height: 0.5px; background: var(--rust); opacity: 0.45; }
-  .section-heading { font-family: var(--serif); font-size: clamp(38px, 5vw, 68px); font-weight: 300; line-height: 1.05; color: var(--charcoal); letter-spacing: -0.01em; margin-bottom: 24px; }
-  .section-heading em { font-style: italic; color: var(--rust); }
-  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s ease, transform 0.8s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-  .rd1 { transition-delay: 0.1s; } .rd2 { transition-delay: 0.2s; } .rd3 { transition-delay: 0.3s; } .rd4 { transition-delay: 0.4s; } .rd5 { transition-delay: 0.5s; }
+section{padding:112px 48px;position:relative}
+.sl{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--rust);margin-bottom:20px;display:flex;align-items:center;gap:16px}
+.sl::after{content:'';flex:0 0 36px;height:.5px;background:var(--rust);opacity:.45}
+.sh{font-family:var(--serif);font-size:clamp(38px,5vw,68px);font-weight:300;line-height:1.05;color:var(--charcoal);letter-spacing:-.01em;margin-bottom:24px}
+.sh em{font-style:italic;color:var(--rust)}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
 
-  #about { background: var(--white); }
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; max-width: 1100px; }
-  .about-intro { font-family: var(--serif); font-size: 21px; font-weight: 300; line-height: 1.7; color: var(--charcoal); }
-  .about-detail { font-size: 14px; line-height: 1.85; color: var(--mid-gray); margin-top: 22px; }
-  .things-title { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--rust); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
-  .things-title::after { content: ''; flex: 0 0 28px; height: 0.5px; background: var(--rust); opacity: 0.45; }
-  .value-item { padding: 20px 0; border-top: 0.5px solid var(--parchment); display: flex; gap: 20px; align-items: flex-start; }
-  .value-text { font-family: var(--serif); font-size: 16px; font-weight: 300; line-height: 1.5; color: var(--charcoal); }
-  .value-text strong { font-weight: 500; display: block; margin-bottom: 3px; font-size: 17px; }
+/* ABOUT */
+#about{background:var(--white)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;max-width:1100px}
+.about-intro{font-family:var(--serif);font-size:21px;font-weight:300;line-height:1.7;color:var(--charcoal)}
+.about-detail{font-size:14px;line-height:1.85;color:var(--mid-gray);margin-top:22px}
+.tick-title{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--rust);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.tick-title::after{content:'';flex:0 0 28px;height:.5px;background:var(--rust);opacity:.45}
+.vi{padding:20px 0;border-top:.5px solid var(--parchment);display:flex;gap:20px;align-items:flex-start}
+.vt{font-family:var(--serif);font-size:16px;font-weight:300;line-height:1.5;color:var(--charcoal)}
+.vt strong{font-weight:500;display:block;margin-bottom:3px;font-size:17px}
 
-  #stats { background: var(--charcoal); overflow: hidden; }
-  .stats-label { color: var(--warm-tan); }
-  .stats-label::after { background: var(--warm-tan); opacity: 0.35; }
-  .stats-heading { color: var(--cream); }
-  .stats-sub { font-size: 14px; color: rgba(201,185,154,0.5); max-width: 560px; margin-top: 14px; line-height: 1.7; }
-  .stats-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: rgba(255,255,255,0.07); border: 0.5px solid rgba(255,255,255,0.07); margin-top: 56px; }
-  .stat-card { background: var(--charcoal); padding: 40px 28px; position: relative; overflow: hidden; }
-  .stat-bar { position: absolute; bottom: 0; left: 0; height: 2px; background: linear-gradient(90deg, var(--gold), transparent); width: 0; transition: width 1.6s ease; }
-  .stat-card.counted .stat-bar { width: 100%; }
-  .stat-num-wrap { font-family: var(--serif); font-size: 50px; font-weight: 300; color: var(--cream); line-height: 1; letter-spacing: -0.02em; display: flex; align-items: baseline; gap: 3px; }
-  .stat-suffix { font-size: 26px; color: var(--gold); }
-  .stat-prefix { font-size: 30px; color: var(--gold); margin-right: 2px; }
-  .stat-desc { margin-top: 12px; font-size: 11px; letter-spacing: 0.07em; color: var(--warm-tan); line-height: 1.5; text-transform: uppercase; }
-  .stat-note { margin-top: 7px; font-size: 11px; color: rgba(201,185,154,0.38); line-height: 1.4; }
+/* STATS */
+#stats{background:var(--charcoal);overflow:hidden}
+.stats-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(255,255,255,.07);border:.5px solid rgba(255,255,255,.07);margin-top:56px}
+.sc{background:var(--charcoal);padding:40px 28px;position:relative;overflow:hidden}
+.sc-bar{position:absolute;bottom:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent);width:0;transition:width 1.6s ease}
+.sc.counted .sc-bar{width:100%}
+.sn{font-family:var(--serif);font-size:50px;font-weight:300;color:var(--cream);line-height:1;letter-spacing:-.02em;display:flex;align-items:baseline;gap:3px}
+.sx{font-size:26px;color:var(--gold)}
+.sp{font-size:30px;color:var(--gold);margin-right:2px}
+.sd{margin-top:12px;font-size:11px;letter-spacing:.07em;color:var(--warm-tan);line-height:1.5;text-transform:uppercase}
+.sn2{margin-top:7px;font-size:11px;color:rgba(201,185,154,.38);line-height:1.4}
 
-  #resume { background: var(--white); }
-  .timeline { position: relative; max-width: 800px; margin-top: 60px; }
-  .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 0.5px; background: var(--parchment); }
-  .tl-item { padding: 0 0 52px 44px; position: relative; }
-  .tl-item::before { content: ''; position: absolute; left: -3px; top: 6px; width: 7px; height: 7px; border-radius: 50%; background: var(--white); border: 1.5px solid var(--warm-tan); transition: background 0.25s, border-color 0.25s; }
-  .tl-item:hover::before { background: var(--rust); border-color: var(--rust); }
-  .tl-date { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rust); margin-bottom: 7px; }
-  .tl-role { font-family: var(--serif); font-size: 21px; font-weight: 400; color: var(--charcoal); margin-bottom: 3px; }
-  .tl-company { font-size: 13px; color: var(--mid-gray); letter-spacing: 0.04em; margin-bottom: 14px; }
-  .tl-desc { font-size: 14px; color: var(--mid-gray); line-height: 1.75; }
-  .tl-highlight { display: inline-block; margin-top: 12px; padding: 4px 12px; background: var(--parchment); font-size: 12px; color: var(--rust); letter-spacing: 0.04em; }
-  .edu-card { background: var(--parchment); padding: 36px; margin-top: 48px; max-width: 800px; display: flex; gap: 28px; align-items: flex-start; }
-  .edu-icon { font-family: var(--serif); font-size: 36px; color: var(--rust); line-height: 1; flex-shrink: 0; }
-  .edu-name { font-family: var(--serif); font-size: 20px; font-weight: 400; margin-bottom: 4px; }
-  .edu-detail { font-size: 13px; color: var(--mid-gray); line-height: 1.6; margin-bottom: 8px; }
-  .edu-award { font-size: 12px; font-style: italic; color: var(--rust); }
-  .tag { display: inline-block; padding: 5px 13px; border: 0.5px solid var(--warm-tan); font-size: 12px; color: var(--mid-gray); letter-spacing: 0.04em; margin: 0 6px 8px 0; }
+/* TIMELINE */
+#resume{background:var(--white)}
+.tl{position:relative;max-width:800px;margin-top:60px}
+.tl::before{content:'';position:absolute;left:0;top:0;bottom:0;width:.5px;background:var(--parchment)}
+.ti{padding:0 0 52px 44px;position:relative}
+.ti::before{content:'';position:absolute;left:-3px;top:6px;width:7px;height:7px;border-radius:50%;background:var(--white);border:1.5px solid var(--warm-tan);transition:background .25s,border-color .25s}
+.ti:hover::before{background:var(--rust);border-color:var(--rust)}
+.td{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--rust);margin-bottom:7px}
+.tr{font-family:var(--serif);font-size:21px;font-weight:400;color:var(--charcoal);margin-bottom:3px}
+.tc{font-size:13px;color:var(--mid-gray);letter-spacing:.04em;margin-bottom:14px}
+.tb{font-size:14px;color:var(--mid-gray);line-height:1.75}
+.th{display:inline-block;margin-top:12px;padding:4px 12px;background:var(--parchment);font-size:12px;color:var(--rust);letter-spacing:.04em}
+.fig-metrics{margin-top:20px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--parchment);max-width:680px}
+.fm{padding:16px 14px}
+.fm:nth-child(odd){background:var(--white)}
+.fm:nth-child(even){background:var(--cream)}
+.fm-num{font-family:var(--serif);font-size:26px;font-weight:300;color:var(--charcoal);line-height:1}
+.fm-label{font-size:11px;color:var(--rust);text-transform:uppercase;letter-spacing:.07em;margin-top:6px}
+.fm-note{font-size:11px;color:var(--mid-gray);margin-top:4px;line-height:1.4}
+.edu{background:var(--parchment);padding:36px;margin-top:48px;max-width:800px;display:flex;gap:28px;align-items:flex-start}
+.edu-icon{font-family:var(--serif);font-size:36px;color:var(--rust);line-height:1;flex-shrink:0}
+.edu-name{font-family:var(--serif);font-size:20px;font-weight:400;margin-bottom:4px}
+.edu-det{font-size:13px;color:var(--mid-gray);line-height:1.6;margin-bottom:8px}
+.edu-aw{font-size:12px;font-style:italic;color:var(--rust)}
+.tag{display:inline-block;padding:5px 13px;border:.5px solid var(--warm-tan);font-size:12px;color:var(--mid-gray);letter-spacing:.04em;margin:0 6px 8px 0}
 
-  #app { background: var(--parchment); }
-  .app-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1000px; }
-  .app-badge { display: inline-flex; align-items: center; gap: 8px; padding: 5px 14px; border: 0.5px solid var(--rust); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rust); margin-bottom: 22px; }
-  .app-dot { width: 6px; height: 6px; background: var(--rust); border-radius: 50%; animation: pulse 2s ease infinite; }
-  .app-heading { font-family: var(--serif); font-size: 40px; font-weight: 300; color: var(--charcoal); line-height: 1.1; margin-bottom: 18px; }
-  .app-desc { font-size: 14px; color: var(--mid-gray); line-height: 1.85; margin-bottom: 28px; }
-  .app-link { display: inline-flex; align-items: center; gap: 8px; padding: 13px 26px; background: var(--charcoal); color: var(--cream); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; }
-  .app-link:hover { background: var(--rust); }
-  .app-visual { background: var(--cream); padding: 32px; }
-  .app-screen { background: var(--white); border: 0.5px solid var(--parchment); padding: 20px; }
-  .app-bar { display: flex; gap: 5px; margin-bottom: 16px; }
-  .app-dot-sm { width: 8px; height: 8px; border-radius: 50%; background: var(--parchment); }
-  .app-line { height: 7px; background: var(--parchment); margin-bottom: 8px; border-radius: 2px; }
-  .app-screen-text { font-family: var(--serif); font-size: 11px; color: var(--mid-gray); font-style: italic; margin-top: 16px; line-height: 1.6; }
+/* AI SECTION */
+#ai{background:var(--charcoal)}
+.ai-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;max-width:1100px;align-items:start}
+.ai-cards{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.07)}
+.ai-card{background:var(--charcoal);padding:28px 24px;border:.5px solid rgba(255,255,255,.07)}
+.ai-card-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.ai-card-text{font-family:var(--serif);font-size:16px;font-weight:300;color:var(--cream);line-height:1.45}
 
-  #writing { background: var(--cream); }
-  .writing-item { display: flex; align-items: flex-start; gap: 32px; padding: 34px 0; border-bottom: 0.5px solid var(--warm-tan); text-decoration: none; color: inherit; transition: padding-left 0.3s; }
-  .writing-item:first-child { border-top: 0.5px solid var(--warm-tan); }
-  .writing-item:hover { padding-left: 14px; }
-  .writing-pub { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rust); width: 130px; flex-shrink: 0; padding-top: 4px; }
-  .writing-body { flex: 1; }
-  .writing-headline { font-family: var(--serif); font-size: 21px; font-weight: 400; color: var(--charcoal); line-height: 1.3; margin-bottom: 8px; transition: color 0.2s; }
-  .writing-item:hover .writing-headline { color: var(--rust); }
-  .writing-desc { font-size: 13px; color: var(--mid-gray); line-height: 1.65; max-width: 520px; }
-  .writing-arrow { font-size: 18px; color: var(--warm-tan); flex-shrink: 0; transition: transform 0.3s, color 0.2s; margin-top: 3px; }
-  .writing-item:hover .writing-arrow { transform: translate(4px,-4px); color: var(--rust); }
+/* APP */
+#app{background:var(--parchment)}
+.app-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1000px;margin-bottom:64px}
+.app-badge{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;border:.5px solid var(--rust);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);margin-bottom:22px}
+.app-dot{width:6px;height:6px;background:var(--rust);border-radius:50%;animation:pulse 2s ease infinite}
+.app-h{font-family:var(--serif);font-size:40px;font-weight:300;color:var(--charcoal);line-height:1.1;margin-bottom:18px}
+.app-tagline{font-family:var(--serif);font-size:20px;font-weight:300;color:var(--charcoal);line-height:1.5;margin-bottom:16px;font-style:italic}
+.app-desc{font-size:14px;color:var(--mid-gray);line-height:1.85;margin-bottom:28px}
+.app-link{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;background:var(--charcoal);color:var(--cream);font-size:11px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:background .2s}
+.app-link:hover{background:var(--rust)}
+.app-vis{background:var(--cream);padding:32px}
+.app-screen{background:var(--white);border:.5px solid var(--parchment);padding:20px}
+.app-bar{display:flex;gap:5px;margin-bottom:16px}
+.app-dot-s{width:8px;height:8px;border-radius:50%;background:var(--parchment)}
+.app-ln{height:7px;background:var(--parchment);margin-bottom:8px;border-radius:2px}
+.app-reflection{border-left:2px solid var(--rust);padding-left:12px;margin-top:18px;font-family:var(--serif);font-size:11px;color:var(--mid-gray);font-style:italic;line-height:1.6}
+.app-cap{font-size:11px;color:var(--mid-gray);margin-top:12px;letter-spacing:.04em;font-style:italic}
+.pso-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;background:var(--parchment);max-width:1000px;margin-bottom:40px}
+.pso-cell{padding:32px 28px}
+.pso-cell:nth-child(odd){background:var(--white)}
+.pso-cell:nth-child(even){background:var(--cream)}
+.pso-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);margin-bottom:14px}
+.pso-text{font-family:var(--serif);font-size:17px;font-weight:300;line-height:1.65;color:var(--charcoal)}
+.diff-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--parchment);max-width:1000px}
+.diff-cell{padding:28px}
+.diff-cell:nth-child(odd){background:var(--white)}
+.diff-cell:nth-child(even){background:var(--cream)}
+.diff-title{font-size:13px;font-weight:500;color:var(--charcoal);margin-bottom:8px}
+.diff-text{font-size:13px;color:var(--mid-gray);line-height:1.7}
 
-  #speaking { background: var(--white); }
-  .speaking-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: start; max-width: 1100px; }
-  .topic-item { padding: 18px 0; border-bottom: 0.5px solid var(--parchment); display: flex; gap: 16px; }
-  .topic-dash { font-family: var(--serif); font-size: 18px; color: var(--rust); flex-shrink: 0; margin-top: -1px; }
-  .topic-text { font-family: var(--serif); font-size: 16px; font-weight: 300; line-height: 1.45; }
-  .venue-item { padding: 16px 22px; background: var(--parchment); margin-bottom: 2px; font-family: var(--serif); font-size: 15px; font-weight: 300; display: flex; align-items: flex-start; gap: 14px; }
-  .venue-icon { color: var(--warm-tan); font-size: 13px; flex-shrink: 0; padding-top: 3px; }
-  .venue-sub { font-size: 12px; color: var(--mid-gray); display: block; margin-top: 2px; letter-spacing: 0.03em; font-family: var(--sans); }
+/* WRITING */
+#writing{background:var(--cream)}
+.wi{display:flex;align-items:flex-start;gap:32px;padding:34px 0;border-bottom:.5px solid var(--warm-tan);text-decoration:none;color:inherit;transition:padding-left .3s}
+.wi:first-child{border-top:.5px solid var(--warm-tan)}
+.wi:hover{padding-left:14px}
+.wi-pub{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--rust);width:130px;flex-shrink:0;padding-top:4px}
+.wi-body{flex:1}
+.wi-head{font-family:var(--serif);font-size:21px;font-weight:400;color:var(--charcoal);line-height:1.3;margin-bottom:8px;transition:color .2s}
+.wi:hover .wi-head{color:var(--rust)}
+.wi-desc{font-size:13px;color:var(--mid-gray);line-height:1.65;max-width:520px}
+.wi-arr{font-size:18px;color:var(--warm-tan);flex-shrink:0;transition:transform .3s,color .2s;margin-top:3px}
+.wi:hover .wi-arr{transform:translate(4px,-4px);color:var(--rust)}
 
-  #creative { background: var(--parchment); }
-  .creative-intro { font-size: 15px; color: var(--mid-gray); line-height: 1.8; max-width: 620px; margin-bottom: 56px; }
-  .creative-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 72px; }
-  .music-card { background: var(--charcoal); padding: 44px 40px; position: relative; overflow: hidden; }
-  .music-card::before { content: ''; position: absolute; bottom: 0; right: 0; width: 160px; height: 160px; background: radial-gradient(circle, rgba(184,146,74,0.1), transparent 70%); }
-  .music-eyebrow { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
-  .music-title { font-family: var(--serif); font-size: 32px; font-weight: 300; color: var(--cream); line-height: 1.2; margin-bottom: 10px; }
-  .music-alias { font-family: var(--serif); font-size: 15px; font-style: italic; color: var(--warm-tan); margin-bottom: 20px; }
-  .music-desc { font-size: 13px; color: rgba(201,185,154,0.65); line-height: 1.7; margin-bottom: 28px; }
-  .spotify-btn { display: inline-flex; align-items: center; gap: 9px; padding: 11px 22px; background: #1DB954; color: #000; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: opacity 0.2s; }
-  .spotify-btn:hover { opacity: 0.88; }
-  .sicon { width: 17px; height: 17px; }
-  .itag { display: inline-block; padding: 5px 12px; border: 0.5px solid rgba(201,185,154,0.3); font-size: 12px; color: rgba(201,185,154,0.6); margin-top: 8px; margin-right: 5px; }
-  .poetry-note { font-size: 14px; color: var(--mid-gray); line-height: 1.8; max-width: 560px; margin-bottom: 36px; font-style: italic; font-family: var(--serif); }
-  .poems-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--parchment); }
-  .poem-card { background: var(--cream); padding: 34px 30px; cursor: pointer; transition: background 0.25s; position: relative; overflow: hidden; }
-  .poem-card:hover { background: var(--white); }
-  .poem-card::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--rust); transform: scaleY(0); transition: transform 0.3s; transform-origin: bottom; }
-  .poem-card:hover::after { transform: scaleY(1); }
-  .poem-title { font-family: var(--serif); font-size: 20px; font-weight: 400; color: var(--charcoal); margin-bottom: 12px; line-height: 1.2; }
-  .poem-excerpt { font-family: var(--serif); font-size: 13px; font-weight: 300; color: var(--mid-gray); line-height: 1.8; font-style: italic; }
-  .poem-date { margin-top: 16px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--warm-tan); }
-  .prose-tag { display: inline-block; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rust); border: 0.5px solid var(--rust); padding: 2px 7px; margin-bottom: 10px; }
+/* SPEAKING */
+#speaking{background:var(--white)}
+.speak-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:start;max-width:1100px}
+.topic-i{padding:18px 0;border-bottom:.5px solid var(--parchment);display:flex;gap:16px}
+.topic-dash{font-family:var(--serif);font-size:18px;color:var(--rust);flex-shrink:0;margin-top:-1px}
+.topic-t{font-family:var(--serif);font-size:16px;font-weight:300;line-height:1.45}
+.venue-i{padding:16px 22px;background:var(--parchment);margin-bottom:2px;font-family:var(--serif);font-size:15px;font-weight:300;display:flex;align-items:flex-start;gap:14px}
+.venue-ic{color:var(--warm-tan);font-size:13px;flex-shrink:0;padding-top:3px}
+.venue-s{font-size:12px;color:var(--mid-gray);display:block;margin-top:2px;letter-spacing:.03em;font-family:var(--sans)}
 
-  .poem-modal-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(44,38,33,0.82); backdrop-filter: blur(8px); align-items: center; justify-content: center; padding: 40px; }
-  .poem-modal-overlay.open { display: flex; }
-  .poem-modal { background: var(--white); max-width: 560px; width: 100%; padding: 52px 58px; position: relative; max-height: 88vh; overflow-y: auto; }
-  .pm-close { position: absolute; top: 22px; right: 26px; font-size: 22px; cursor: pointer; color: var(--light-gray); background: none; border: none; font-family: var(--serif); line-height: 1; transition: color 0.2s; }
-  .pm-close:hover { color: var(--rust); }
-  .pm-title { font-family: var(--serif); font-size: 30px; font-weight: 400; color: var(--charcoal); margin-bottom: 6px; }
-  .pm-date { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--warm-tan); margin-bottom: 32px; }
-  .pm-body { font-family: var(--serif); font-size: 16px; font-weight: 300; color: var(--charcoal); line-height: 2.05; white-space: pre-wrap; }
+/* CREATIVE */
+#creative{background:var(--parchment)}
+.creative-intro{font-size:15px;color:var(--mid-gray);line-height:1.8;max-width:620px;margin-bottom:56px}
+.cc{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:72px}
+.music-card{background:var(--charcoal);padding:44px 40px;position:relative;overflow:hidden}
+.music-card::before{content:'';position:absolute;bottom:0;right:0;width:160px;height:160px;background:radial-gradient(circle,rgba(184,146,74,.1),transparent 70%)}
+.me{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.mt{font-family:var(--serif);font-size:32px;font-weight:300;color:var(--cream);line-height:1.2;margin-bottom:10px}
+.ma{font-family:var(--serif);font-size:15px;font-style:italic;color:var(--warm-tan);margin-bottom:20px}
+.md{font-size:13px;color:rgba(201,185,154,.65);line-height:1.7;margin-bottom:28px}
+.spotify{display:inline-flex;align-items:center;gap:9px;padding:11px 22px;background:#1DB954;color:#000;font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:opacity .2s}
+.spotify:hover{opacity:.88}
+.si{width:17px;height:17px}
+.itag{display:inline-block;padding:5px 12px;border:.5px solid rgba(201,185,154,.3);font-size:12px;color:rgba(201,185,154,.6);margin-top:8px;margin-right:5px}
+.poetry-note{font-size:14px;color:var(--mid-gray);line-height:1.8;max-width:560px;margin-bottom:36px;font-style:italic;font-family:var(--serif)}
+.poems-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--parchment)}
+.pc{background:var(--cream);padding:34px 30px;cursor:pointer;transition:background .25s;position:relative;overflow:hidden}
+.pc:hover{background:var(--white)}
+.pc::after{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--rust);transform:scaleY(0);transition:transform .3s;transform-origin:bottom}
+.pc:hover::after{transform:scaleY(1)}
+.pt{font-family:var(--serif);font-size:20px;font-weight:400;color:var(--charcoal);margin-bottom:12px;line-height:1.2}
+.pe{font-family:var(--serif);font-size:13px;font-weight:300;color:var(--mid-gray);line-height:1.8;font-style:italic}
+.pd{margin-top:16px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--warm-tan)}
+.prose-tag{display:inline-block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--rust);border:.5px solid var(--rust);padding:2px 7px;margin-bottom:10px}
 
-  #contact { background: var(--charcoal); padding: 130px 48px; text-align: center; }
-  .contact-heading { font-family: var(--serif); font-size: clamp(40px, 6vw, 86px); font-weight: 300; color: var(--cream); line-height: 1.0; margin-bottom: 28px; }
-  .contact-heading em { font-style: italic; color: var(--gold); }
-  .contact-sub { font-size: 14px; color: var(--warm-tan); max-width: 480px; margin: 0 auto 44px; line-height: 1.75; }
-  .contact-email { font-family: var(--serif); font-size: 21px; color: var(--cream); text-decoration: none; border-bottom: 0.5px solid var(--warm-tan); padding-bottom: 4px; transition: color 0.2s, border-color 0.2s; }
-  .contact-email:hover { color: var(--gold); border-color: var(--gold); }
-  .contact-links { margin-top: 44px; display: flex; justify-content: center; gap: 36px; flex-wrap: wrap; }
-  .clink { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--warm-tan); text-decoration: none; transition: color 0.2s; }
-  .clink:hover { color: var(--cream); }
+/* MODAL */
+.mo{display:none;position:fixed;inset:0;z-index:200;background:rgba(44,38,33,.82);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:40px}
+.mo.open{display:flex}
+.mm{background:var(--white);max-width:560px;width:100%;padding:52px 58px;position:relative;max-height:88vh;overflow-y:auto}
+.mc{position:absolute;top:22px;right:26px;font-size:22px;cursor:pointer;color:var(--light-gray);background:none;border:none;font-family:var(--serif);line-height:1;transition:color .2s}
+.mc:hover{color:var(--rust)}
+.mti{font-family:var(--serif);font-size:30px;font-weight:400;color:var(--charcoal);margin-bottom:6px}
+.mda{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--warm-tan);margin-bottom:32px}
+.mbo{font-family:var(--serif);font-size:16px;font-weight:300;color:var(--charcoal);line-height:2.05;white-space:pre-wrap}
 
-  footer { background: var(--charcoal); border-top: 0.5px solid rgba(255,255,255,0.06); padding: 26px 48px; display: flex; justify-content: space-between; align-items: center; }
-  .footer-name { font-family: var(--serif); font-size: 14px; color: rgba(201,185,154,0.4); }
-  .footer-copy { font-size: 11px; color: rgba(201,185,154,0.28); letter-spacing: 0.08em; }
+/* CONTACT */
+#contact{background:var(--charcoal);padding:130px 48px;text-align:center}
+.ch{font-family:var(--serif);font-size:clamp(40px,6vw,86px);font-weight:300;color:var(--cream);line-height:1.0;margin-bottom:28px}
+.ch em{font-style:italic;color:var(--gold)}
+.csub{font-size:14px;color:var(--warm-tan);max-width:480px;margin:0 auto 44px;line-height:1.75}
+.cemail{font-family:var(--serif);font-size:21px;color:var(--cream);text-decoration:none;border-bottom:.5px solid var(--warm-tan);padding-bottom:4px;transition:color .2s,border-color .2s}
+.cemail:hover{color:var(--gold);border-color:var(--gold)}
+.clinks{margin-top:44px;display:flex;justify-content:center;gap:36px;flex-wrap:wrap}
+.clink{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--warm-tan);text-decoration:none;transition:color .2s}
+.clink:hover{color:var(--cream)}
+footer{background:var(--charcoal);border-top:.5px solid rgba(255,255,255,.06);padding:26px 48px;display:flex;justify-content:space-between;align-items:center}
+.fn{font-family:var(--serif);font-size:14px;color:rgba(201,185,154,.4)}
+.fc{font-size:11px;color:rgba(201,185,154,.28);letter-spacing:.08em}
 
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.25; } }
-  @keyframes scrollLine { 0% { transform: scaleY(0); transform-origin: top; } 40% { transform: scaleY(1); transform-origin: top; } 60% { transform: scaleY(1); transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top}40%{transform:scaleY(1);transform-origin:top}60%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
-  @media (max-width: 900px) {
-    nav { padding: 16px 24px; }
-    section { padding: 72px 24px; }
-    #hero { padding: 0 24px 60px; }
-    .about-grid, .app-grid, .speaking-grid, .creative-cols { grid-template-columns: 1fr; gap: 40px; }
-    .stats-grid { grid-template-columns: repeat(2, 1fr); }
-    .poems-grid { grid-template-columns: 1fr; }
-    .nav-links { display: none; }
-    .hero-scroll-hint { display: none; }
-  }
+@media(max-width:900px){
+  nav{padding:16px 24px}
+  section{padding:72px 24px}
+  #hero{padding:0 24px 60px}
+  .about-grid,.app-grid,.speak-grid,.cc,.ai-grid{grid-template-columns:1fr;gap:40px}
+  .stats-grid,.ai-cards{grid-template-columns:repeat(2,1fr)}
+  .pso-grid,.poems-grid{grid-template-columns:1fr}
+  .fig-metrics{grid-template-columns:repeat(2,1fr)}
+  #thinking [style*="grid-template-columns:1.1fr"]{grid-template-columns:1fr!important}
+  #resume [style*="grid-template-columns:repeat(3"]{grid-template-columns:repeat(2,1fr)!important}
+  .nav-links{display:none}
+  .scroll-hint{display:none}
+}
 </style>
 </head>
 <body>
@@ -200,6 +236,8 @@
     <li><a href="#about">About</a></li>
     <li><a href="#stats">Impact</a></li>
     <li><a href="#resume">Experience</a></li>
+    <li><a href="#thinking">How I Think</a></li>
+    <li><a href="#ai">AI &amp; Tech</a></li>
     <li><a href="#app">Projects</a></li>
     <li><a href="#writing">Writing</a></li>
     <li><a href="#speaking">Speaking</a></li>
@@ -208,351 +246,347 @@
   </ul>
 </nav>
 
+<!-- HERO -->
 <section id="hero">
   <div class="hero-bg"></div>
-  <div class="hero-line-decor"></div>
+  <div class="hero-line"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Marketing · Demand Generation · Lifecycle Strategy</p>
+    <p class="hero-eyebrow">Marketing &middot; Demand Generation &middot; Lifecycle Strategy</p>
     <h1 class="hero-name">Corinne<br><em>Clevenger</em></h1>
     <p class="hero-tagline">Revenue marketer, writer, and lifelong learner based in Charlotte, NC. This is a collection of the work I've done, the things I'm building, and a little of what makes me who I am.</p>
-    <div class="hero-cta-row">
-      <a href="#resume" class="btn-primary">View Experience</a>
-      <a href="#contact" class="btn-ghost">Get in Touch</a>
+    <div class="hero-cta">
+      <a href="#resume" class="btn-p">View Experience</a>
+      <a href="#contact" class="btn-g">Get in Touch</a>
     </div>
   </div>
-  <div class="hero-scroll-hint">Scroll</div>
+  <div class="scroll-hint">Scroll</div>
 </section>
 
+<!-- ABOUT -->
 <section id="about">
   <div class="about-grid">
     <div>
-      <p class="section-label reveal">A Bit About Me</p>
-      <div class="about-intro reveal rd1">
-        I'm a revenue-focused marketing professional with a background in SaaS, financial services, cybersecurity, and national media. I care about building things that work.
-      </div>
-      <p class="about-detail reveal rd2">
-        Currently, I lead demand generation and lifecycle marketing at American City Business Journals, supporting 25+ sales reps across 45 U.S. markets. I own the HubSpot infrastructure, run integrated campaigns, and spend a lot of time thinking about how marketing and sales can actually work together — not just in theory.<br><br>
-        I tend to work best at the intersection of strategy and execution. I like figuring out what's broken, building systems to fix it, and measuring what happens next. I'm especially drawn to how AI and automation are reshaping what's possible for lean marketing teams.
-      </p>
-      <p class="about-detail reveal rd3" style="margin-top:14px;">
-        Outside of work, I write poetry, record music, mentor college students, and am building a reading app in beta. Not all of it fits neatly on a resume — but I think it's part of the picture.
-      </p>
+      <p class="sl reveal">A Bit About Me</p>
+      <div class="about-intro reveal d1">I'm a revenue-focused marketing professional with a background in SaaS, financial services, cybersecurity, and national media. I care about building things that work.</div>
+      <p class="about-detail reveal d2">Currently, I lead demand generation and lifecycle marketing at American City Business Journals, supporting 25+ sales reps across 45 U.S. markets. I own the HubSpot infrastructure, run integrated campaigns, and spend a lot of time thinking about how marketing and sales can actually work together — not just in theory.<br><br>I tend to work best at the intersection of strategy and execution. I like figuring out what's broken, building systems to fix it, and measuring what happens next. I'm especially drawn to how AI and automation are reshaping what's possible for lean marketing teams.</p>
+      <p class="about-detail reveal d3" style="margin-top:14px;">Outside of work, I write poetry, record music, mentor college students, and am building a journaling app in beta. Not all of it fits neatly on a resume — but I think it's part of the picture.</p>
     </div>
-    <div class="reveal rd2">
-      <p class="things-title">Things That Make Me Tick</p>
-      <div class="value-item">
-        <div class="value-text"><strong>Confident Humility</strong>Knowing where you're strong and staying genuinely open to learning. I think that balance matters more than most things.</div>
-      </div>
-      <div class="value-item">
-        <div class="value-text"><strong>Systems Thinking</strong>I like understanding how the pieces connect before jumping to solutions. Most problems are downstream of something structural.</div>
-      </div>
-      <div class="value-item">
-        <div class="value-text"><strong>Radical Curiosity</strong>The most interesting work tends to come from asking questions other people haven't asked yet.</div>
-      </div>
-      <div class="value-item">
-        <div class="value-text"><strong>People Over Process</strong>Systems are only useful if the people running them actually want to use them.</div>
-      </div>
-      <div class="value-item">
-        <div class="value-text"><strong>Doing Things That Matter</strong>In work and in life — I'd rather be useful than impressive.</div>
-      </div>
+    <div class="reveal d2">
+      <p class="tick-title">Things That Make Me Tick</p>
+      <div class="vi"><div class="vt"><strong>Confident Humility</strong>Knowing where you're strong and staying genuinely open to learning. I think that balance matters more than most things.</div></div>
+      <div class="vi"><div class="vt"><strong>Systems Thinking</strong>I like understanding how the pieces connect before jumping to solutions. Most problems are downstream of something structural.</div></div>
+      <div class="vi"><div class="vt"><strong>Radical Curiosity</strong>The most interesting work tends to come from asking questions other people haven't asked yet.</div></div>
+      <div class="vi"><div class="vt"><strong>People Over Process</strong>Systems are only useful if the people running them actually want to use them.</div></div>
+      <div class="vi"><div class="vt"><strong>Doing Things That Matter</strong>In work and in life — I'd rather be useful than impressive.</div></div>
     </div>
   </div>
 </section>
 
+<!-- STATS -->
 <section id="stats">
-  <p class="section-label stats-label reveal">Recent Marketing Impact · ACBJ</p>
-  <h2 class="section-heading stats-heading reveal rd1">By the<br><em>numbers.</em></h2>
-  <p class="stats-sub reveal rd2">A snapshot of what the last 12 months at American City Business Journals looked like — driven by lifecycle marketing, demand generation, and automation infrastructure across 45 U.S. markets.</p>
-  <div class="stats-grid reveal rd3" id="stats-grid">
-    <div class="stat-card" data-target="3" data-prefix="$" data-suffix="M+" data-fmt="prefix">
-      <div class="stat-num-wrap"><span class="stat-prefix">$</span><span class="stat-val">0</span><span class="stat-suffix">M+</span></div>
-      <div class="stat-bar"></div>
-      <div class="stat-desc">Revenue Generated</div>
-      <div class="stat-note">Lifecycle marketing & demand generation</div>
-    </div>
-    <div class="stat-card" data-target="1315" data-prefix="" data-suffix="" data-fmt="comma">
-      <div class="stat-num-wrap"><span class="stat-val">0</span></div>
-      <div class="stat-bar"></div>
-      <div class="stat-desc">Qualified Leads</div>
-      <div class="stat-note">Targeted acquisition campaigns</div>
-    </div>
-    <div class="stat-card" data-target="1000" data-prefix="" data-suffix="+" data-fmt="comma">
-      <div class="stat-num-wrap"><span class="stat-val">0</span><span class="stat-suffix">+</span></div>
-      <div class="stat-bar"></div>
-      <div class="stat-desc">Deals Influenced</div>
-      <div class="stat-note">Multi-touch automation sequences</div>
-    </div>
-    <div class="stat-card" data-target="136" data-prefix="" data-suffix="%" data-fmt="plain">
-      <div class="stat-num-wrap"><span class="stat-val">0</span><span class="stat-suffix">%</span></div>
-      <div class="stat-bar"></div>
-      <div class="stat-desc">Campaign Revenue YoY</div>
-      <div class="stat-note">$80K → $189K via segmentation</div>
-    </div>
-    <div class="stat-card" data-target="45" data-prefix="" data-suffix="" data-fmt="plain">
-      <div class="stat-num-wrap"><span class="stat-val">0</span></div>
-      <div class="stat-bar"></div>
-      <div class="stat-desc">U.S. Markets</div>
-      <div class="stat-note">Supporting 25+ sales reps</div>
-    </div>
+  <p class="sl reveal" style="color:var(--warm-tan)">Recent Marketing Impact &middot; ACBJ</p>
+  <h2 class="sh reveal d1" style="color:var(--cream)">By the<br><em>numbers.</em></h2>
+  <p class="reveal d2" style="font-size:14px;color:rgba(201,185,154,.5);max-width:560px;margin-top:14px;line-height:1.7">A snapshot of the last 12 months at American City Business Journals — lifecycle marketing, demand generation, and automation infrastructure across 45 U.S. markets.</p>
+  <div class="stats-grid reveal d3" id="stats-grid">
+    <div class="sc" data-target="3" data-prefix="$" data-suffix="M+" data-fmt="plain"><div class="sn"><span class="sp">$</span><span class="sv">0</span><span class="sx">M+</span></div><div class="sc-bar"></div><div class="sd">Revenue Generated</div><div class="sn2">Lifecycle marketing &amp; demand generation</div></div>
+    <div class="sc" data-target="1315" data-prefix="" data-suffix="" data-fmt="comma"><div class="sn"><span class="sv">0</span></div><div class="sc-bar"></div><div class="sd">Qualified Leads</div><div class="sn2">Targeted acquisition campaigns</div></div>
+    <div class="sc" data-target="1000" data-prefix="" data-suffix="+" data-fmt="comma"><div class="sn"><span class="sv">0</span><span class="sx">+</span></div><div class="sc-bar"></div><div class="sd">Deals Influenced</div><div class="sn2">Multi-touch automation sequences</div></div>
+    <div class="sc" data-target="136" data-prefix="" data-suffix="%" data-fmt="plain"><div class="sn"><span class="sv">0</span><span class="sx">%</span></div><div class="sc-bar"></div><div class="sd">Campaign Revenue YoY</div><div class="sn2">$80K &rarr; $189K via segmentation</div></div>
+    <div class="sc" data-target="45" data-prefix="" data-suffix="" data-fmt="plain"><div class="sn"><span class="sv">0</span></div><div class="sc-bar"></div><div class="sd">U.S. Markets</div><div class="sn2">Supporting 25+ sales reps</div></div>
   </div>
 </section>
 
+<!-- RESUME -->
 <section id="resume">
-  <p class="section-label reveal">Experience</p>
-  <h2 class="section-heading reveal rd1">Where I've<br><em>worked.</em></h2>
-  <div class="timeline">
-    <div class="tl-item reveal">
-      <div class="tl-date">Dec 2024 – Present</div>
-      <div class="tl-role">Marketing Manager, Promotional Sales</div>
-      <div class="tl-company">American City Business Journals</div>
-      <div class="tl-desc">Lead demand generation and lifecycle marketing for promotional products and article reprints across 45 U.S. markets. Own HubSpot Marketing & Sales Hub infrastructure supporting 25+ reps. Drive integrated campaigns across email, paid search, social, and digital. Selected member of internal AI task force on marketing automation and AI integration.</div>
-      <span class="tl-highlight">$3M+ revenue · 1,315 qualified leads · 136% YoY campaign growth</span>
+  <p class="sl reveal">Experience</p>
+  <h2 class="sh reveal d1">Where I've<br><em>worked.</em></h2>
+  <div class="tl">
+    <div class="ti reveal">
+      <div class="td">Dec 2024 &ndash; Present</div>
+      <div class="tr">Marketing Manager, Promotional Sales</div>
+      <div class="tc">American City Business Journals</div>
+      <div class="tb">Lead demand generation and lifecycle marketing for promotional products and article reprints across 45 U.S. markets. Own HubSpot Marketing &amp; Sales Hub infrastructure supporting 25+ sales reps. Build and execute integrated campaigns across email, paid search, social media, banner advertising, ebooks, webinars, thought leadership, cxense placements, and website — with A/B testing and monthly analytics throughout. Selected member of internal AI task force on marketing automation and AI integration.<br><br>Designed and led a four-part company-wide webinar series on LinkedIn personal branding for company growth — training advertising and promotional sales reps across outreach practices, content strategy, posting, engagement, and account-based selling. Developed full enablement toolkits spanning static assets to video.<br><br>Pitched a product concept to leadership that was taken to developers for deployment within the same week.</div>
+      <span class="th">$3M+ revenue &middot; 1,315 qualified leads &middot; 136% YoY campaign growth</span>
     </div>
-    <div class="tl-item reveal rd1">
-      <div class="tl-date">Dec 2022 – Sep 2024</div>
-      <div class="tl-role">Content Marketing Specialist</div>
-      <div class="tl-company">Financial Independence Group</div>
-      <div class="tl-desc">Executed integrated B2B marketing campaigns across email, SEO, webinars, landing pages, and paid media. Developed thought leadership content aligned with advisor lead generation. Partnered cross-functionally with compliance, product, and sales within a regulated financial services environment.</div>
+    <div class="ti reveal d1">
+      <div class="td">Dec 2022 &ndash; Sep 2024</div>
+      <div class="tr">Content Marketing Specialist</div>
+      <div class="tc">Financial Independence Group</div>
+      <div class="tb">Executed integrated B2B marketing campaigns across email, SEO, webinars, landing pages, and paid media. Developed thought leadership content aligned with advisor lead generation. Partnered cross-functionally with compliance, product, and sales within a regulated financial services environment.</div>
+      <div class="fig-metrics">
+        <div class="fm"><div class="fm-num">620</div><div class="fm-label">Leads &middot; 2023</div><div class="fm-note">393 form subs &middot; 227 SQL &mdash; exceeded annual goal of 210</div></div>
+        <div class="fm"><div class="fm-num">251</div><div class="fm-label">Emails Sent</div><div class="fm-note">34% avg open rate &middot; 20% lift in open rate Aug campaign</div></div>
+        <div class="fm"><div class="fm-num">204</div><div class="fm-label">Webinar Registrants</div><div class="fm-note">Goal was 100 &mdash; 2&times; overdelivered on webinar series</div></div>
+        <div class="fm"><div class="fm-num">+266%</div><div class="fm-label">Social Engagement</div><div class="fm-note">18,911 engagements &middot; +522% link clicks &middot; 12.6% eng rate</div></div>
+      </div>
     </div>
-    <div class="tl-item reveal rd2">
-      <div class="tl-date">Feb 2022 – Nov 2022</div>
-      <div class="tl-role">Marketing Associate</div>
-      <div class="tl-company">Designerds Creative Agency</div>
-      <div class="tl-desc">Led end-to-end client campaigns in partnership with design and strategy teams. Supported company-wide rebrand. Increased audience engagement 110% through integrated digital strategies.</div>
+    <div class="ti reveal d2">
+      <div class="td">Feb 2022 &ndash; Nov 2022</div>
+      <div class="tr">Marketing Associate</div>
+      <div class="tc">Designerds Creative Agency</div>
+      <div class="tb">Led end-to-end client campaigns in partnership with design and strategy teams. Supported company-wide rebrand. Increased audience engagement 110% through integrated digital strategies.</div>
     </div>
-    <div class="tl-item reveal rd3">
-      <div class="tl-date">Aug 2021 – Mar 2022</div>
-      <div class="tl-role">Social Media Manager</div>
-      <div class="tl-company">Black Fox Philanthropy · Contract</div>
-      <div class="tl-desc">Managed digital and social media strategy for a nonprofit. Developed branded content frameworks and supported multi-channel planning with executive leadership.</div>
+    <div class="ti reveal d3">
+      <div class="td">Aug 2021 &ndash; Mar 2022</div>
+      <div class="tr">Social Media Manager</div>
+      <div class="tc">Black Fox Philanthropy &middot; Contract</div>
+      <div class="tb">Managed digital and social media strategy for a nonprofit. Developed branded content frameworks and supported multi-channel planning with executive leadership.</div>
     </div>
-    <div class="tl-item reveal rd4">
-      <div class="tl-date">Jan 2019 – Dec 2024</div>
-      <div class="tl-role">Freelance Marketing Consultant</div>
-      <div class="tl-company">Independent</div>
-      <div class="tl-desc">SEO strategy, marketing automation, and demand generation for B2B and SaaS clients. Built reporting frameworks and dashboards to track pipeline and campaign performance.</div>
+    <div class="ti reveal d4">
+      <div class="td">Jan 2019 &ndash; Dec 2024</div>
+      <div class="tr">Freelance Marketing Consultant</div>
+      <div class="tc">Independent</div>
+      <div class="tb">SEO strategy, marketing automation, and demand generation for B2B and SaaS clients. Built reporting frameworks and dashboards to track pipeline and campaign performance.</div>
     </div>
-    <div class="tl-item reveal rd5">
-      <div class="tl-date">Early Career</div>
-      <div class="tl-role">Marketing Internships</div>
-      <div class="tl-company">IDSeal Cyber Security · Prometheus Group</div>
-      <div class="tl-desc">Go-to-market support for identity protection SaaS and enterprise software companies. At Prometheus Group, generated a $1.5M sales lead list through LinkedIn and Salesforce research.</div>
+    <div class="ti reveal d5">
+      <div class="td">Early Career</div>
+      <div class="tr">Marketing Internships</div>
+      <div class="tc">IDSeal Cyber Security &middot; Prometheus Group</div>
+      <div class="tb">Go-to-market support for identity protection SaaS and enterprise software. At Prometheus Group, generated a $1.5M sales lead list through LinkedIn and Salesforce research.</div>
     </div>
   </div>
-  <div class="edu-card reveal">
-    <div class="edu-icon">◎</div>
+  <div class="edu reveal">
+    <div class="edu-icon">&#9677;</div>
     <div>
       <div class="edu-name">Wingate University</div>
-      <div class="edu-detail">B.S. Marketing (Honors) · Magna Cum Laude · GPA 3.81 · Porter B. Byrum School of Business</div>
-      <div class="edu-award">Porter B. Byrum Marketing Award · Reaves Research Grant Recipient</div>
+      <div class="edu-det">B.S. Marketing (Honors) &middot; Magna Cum Laude &middot; GPA 3.81 &middot; Porter B. Byrum School of Business</div>
+      <div class="edu-aw">Porter B. Byrum Marketing Award &middot; Reaves Research Grant Recipient</div>
     </div>
   </div>
-  <div style="margin-top:40px; max-width:800px;" class="reveal">
-    <p class="section-label" style="margin-bottom:16px;">Core Skills & Tools</p>
-    <div>
-      <span class="tag">Demand Generation</span><span class="tag">Revenue Marketing</span><span class="tag">HubSpot</span>
-      <span class="tag">Lifecycle Marketing</span><span class="tag">Marketing Automation</span><span class="tag">Go-to-Market Strategy</span>
-      <span class="tag">Conversion Optimization</span><span class="tag">Sales Enablement</span><span class="tag">Lead Generation</span>
-      <span class="tag">Growth Marketing</span><span class="tag">Google Analytics</span><span class="tag">Salesforce</span>
-      <span class="tag">Adobe Creative Suite</span><span class="tag">AI Integration</span><span class="tag">LinkedIn Sales Navigator</span>
+  <div style="margin-top:40px;max-width:800px" class="reveal">
+    <p class="sl" style="margin-bottom:16px">Core Skills &amp; Tools</p>
+    <div><span class="tag">Demand Generation</span><span class="tag">Revenue Marketing</span><span class="tag">HubSpot</span><span class="tag">Lifecycle Marketing</span><span class="tag">Marketing Automation</span><span class="tag">Go-to-Market Strategy</span><span class="tag">Conversion Optimization</span><span class="tag">Sales Enablement</span><span class="tag">Lead Generation</span><span class="tag">Growth Marketing</span><span class="tag">Google Analytics</span><span class="tag">Salesforce</span><span class="tag">Adobe Creative Suite</span><span class="tag">AI Integration</span><span class="tag">LinkedIn Sales Navigator</span></div>
+  </div>
+
+  <!-- CERTIFICATIONS -->
+  <div style="margin-top:60px;max-width:900px" class="reveal">
+    <p class="sl" style="margin-bottom:28px">Certifications</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--parchment)">
+      <div style="background:var(--white);padding:24px 22px">
+        <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);margin-bottom:10px">HubSpot Academy</div>
+        <div style="font-family:var(--serif);font-size:16px;font-weight:400;color:var(--charcoal);margin-bottom:6px">Digital Advertising</div>
+        <div style="font-size:11px;color:var(--mid-gray)">Issued Apr 2025 &middot; Expires May 2026</div>
+      </div>
+      <div style="background:var(--cream);padding:24px 22px">
+        <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);margin-bottom:10px">HubSpot Academy</div>
+        <div style="font-family:var(--serif);font-size:16px;font-weight:400;color:var(--charcoal);margin-bottom:6px">Inbound Marketing Optimization</div>
+        <div style="font-size:11px;color:var(--mid-gray)">Issued Dec 2024 &middot; Expires Jan 2026</div>
+      </div>
+      <div style="background:var(--white);padding:24px 22px">
+        <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);margin-bottom:10px">HubSpot Academy</div>
+        <div style="font-family:var(--serif);font-size:16px;font-weight:400;color:var(--charcoal);margin-bottom:6px">Email Marketing</div>
+        <div style="font-size:11px;color:var(--mid-gray)">Issued Dec 2024 &middot; Expires Jan 2027</div>
+      </div>
+      <div style="background:var(--cream);padding:24px 22px">
+        <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);margin-bottom:10px">HubSpot Academy</div>
+        <div style="font-family:var(--serif);font-size:16px;font-weight:400;color:var(--charcoal);margin-bottom:6px">Content Marketing</div>
+        <div style="font-size:11px;color:var(--mid-gray)">Issued Dec 2024 &middot; Expires Jan 2027</div>
+      </div>
+      <div style="background:var(--white);padding:24px 22px">
+        <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);margin-bottom:10px">HubSpot Academy</div>
+        <div style="font-family:var(--serif);font-size:16px;font-weight:400;color:var(--charcoal);margin-bottom:6px">Sales Enablement</div>
+        <div style="font-size:11px;color:var(--mid-gray)">Issued Dec 2024 &middot; Expires Jan 2027</div>
+      </div>
+      <div style="background:var(--cream);padding:24px 22px">
+        <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);margin-bottom:10px">HubSpot Academy</div>
+        <div style="font-family:var(--serif);font-size:16px;font-weight:400;color:var(--charcoal);margin-bottom:6px">HubSpot Sales Hub Software</div>
+        <div style="font-size:11px;color:var(--mid-gray)">Issued Dec 2024 &middot; Expires Jan 2026</div>
+      </div>
+      <div style="background:var(--white);padding:24px 22px">
+        <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);margin-bottom:10px">Coursera</div>
+        <div style="font-family:var(--serif);font-size:16px;font-weight:400;color:var(--charcoal);margin-bottom:6px">Prompt Engineering for ChatGPT</div>
+        <div style="font-size:11px;color:var(--mid-gray)">Issued Oct 2023 &middot; Credential: SL9ES62654U7</div>
+      </div>
+      <div style="background:var(--cream);padding:24px 22px">
+        <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);margin-bottom:10px">Google</div>
+        <div style="font-family:var(--serif);font-size:16px;font-weight:400;color:var(--charcoal);margin-bottom:6px">Google Analytics</div>
+        <div style="font-size:11px;color:var(--mid-gray)">Issued Sep 2021</div>
+      </div>
+      <div style="background:var(--white);padding:24px 22px;display:flex;align-items:center;justify-content:center">
+        <p style="font-family:var(--serif);font-size:14px;font-weight:300;color:var(--light-gray);font-style:italic;text-align:center;line-height:1.6">Continuously pursuing<br>continued education</p>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- HOW I THINK -->
+<section id="thinking" style="background:var(--white)">
+  <p class="sl reveal">How I Think</p>
+  <h2 class="sh reveal d1">Systems, signals,<br><em>and the gaps.</em></h2>
+  <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:80px;max-width:1100px;align-items:start" class="reveal d2">
+    <div>
+      <p style="font-family:var(--serif);font-size:20px;font-weight:300;color:var(--charcoal);line-height:1.75;margin-bottom:24px">I tend to start with the landscape — not the deliverable. Before I build anything, I want to understand what's actually happening: where the gaps are, what the data is saying, and what it might not be saying yet.</p>
+      <p style="font-size:14px;color:var(--mid-gray);line-height:1.85;margin-bottom:20px">Most marketing problems I've encountered aren't really marketing problems. They're symptoms of a misalignment somewhere upstream — a message that doesn't match the audience, a funnel that moves people through the wrong stages, an automation that technically runs but doesn't actually do anything. I like finding those disconnects.</p>
+      <p style="font-size:14px;color:var(--mid-gray);line-height:1.85;margin-bottom:20px">From there, I use what I know — the metrics, the context, the behavior patterns — to build toward what I don't know yet. I'm comfortable sitting with a hypothesis before it's proven. I'd rather test something and learn than wait for certainty that doesn't come.</p>
+      <p style="font-size:14px;color:var(--mid-gray);line-height:1.85">The systems I build are meant to compound. A campaign shouldn't just perform — it should teach you something. An automation shouldn't just save time — it should make the next version better. That's the lens I bring to most things.</p>
+    </div>
+    <div>
+      <div style="border-top:.5px solid var(--parchment);padding:24px 0">
+        <p style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);margin-bottom:10px">Start with the landscape</p>
+        <p style="font-family:var(--serif);font-size:16px;font-weight:300;color:var(--charcoal);line-height:1.55">Understand the full system before touching any part of it. Most solutions fail because they optimize a piece without seeing the whole.</p>
+      </div>
+      <div style="border-top:.5px solid var(--parchment);padding:24px 0">
+        <p style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);margin-bottom:10px">Let the knowns point to the unknowns</p>
+        <p style="font-family:var(--serif);font-size:16px;font-weight:300;color:var(--charcoal);line-height:1.55">Metrics tell you what happened. Patterns tell you where to look next. The gap between them is usually where the interesting work is.</p>
+      </div>
+      <div style="border-top:.5px solid var(--parchment);padding:24px 0">
+        <p style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);margin-bottom:10px">Build things that compound</p>
+        <p style="font-family:var(--serif);font-size:16px;font-weight:300;color:var(--charcoal);line-height:1.55">A good system doesn't just solve the immediate problem — it creates more clarity and more capability over time.</p>
+      </div>
+      <div style="border-top:.5px solid var(--parchment);border-bottom:.5px solid var(--parchment);padding:24px 0">
+        <p style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);margin-bottom:10px">Stay curious about the unconventional</p>
+        <p style="font-family:var(--serif);font-size:16px;font-weight:300;color:var(--charcoal);line-height:1.55">The obvious answer is usually already being tried by everyone else. I'd rather follow the thread that hasn't been pulled yet.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="ai">
+  <p class="sl reveal" style="color:var(--warm-tan)">What Makes Me Nerd Out</p>
+  <h2 class="sh reveal d1" style="color:var(--cream)">AI, automation,<br><em>and what's next.</em></h2>
+  <div class="ai-grid reveal d2">
+    <div>
+      <p style="font-family:var(--serif);font-size:19px;font-weight:300;color:rgba(247,244,239,.75);line-height:1.75;margin-bottom:24px">I've always been curious about how things work under the hood. Lately that curiosity has pointed squarely at AI — not as a buzzword, but as a genuinely useful set of tools I want to understand and use well.</p>
+      <p style="font-size:14px;color:rgba(201,185,154,.6);line-height:1.85;margin-bottom:24px">I'm prompt engineering certified through OpenAI, and have spent meaningful time developing a working understanding of how large language models actually function — the way they process context, generate outputs, and where they're reliable or not. I use Claude and Claude Code regularly, and I'm comfortable working with integrations across the marketing platforms and tools I use day-to-day.</p>
+      <p style="font-size:14px;color:rgba(201,185,154,.6);line-height:1.85">The marketers who understand what AI can and can't do — and build systems around that honestly — are going to have a real edge. That's what I'm working toward. Less about keeping up, more about building something sustainable that drives better results.</p>
+    </div>
+    <div class="ai-cards">
+      <div class="ai-card"><div class="ai-card-label">Certified</div><div class="ai-card-text">Prompt Engineering &middot; OpenAI / ChatGPT</div></div>
+      <div class="ai-card"><div class="ai-card-label">Actively Using</div><div class="ai-card-text">Claude &middot; Claude Code &middot; ChatGPT &middot; AI integrations across marketing stack</div></div>
+      <div class="ai-card"><div class="ai-card-label">Built With AI</div><div class="ai-card-text">Margin &mdash; taught myself front-end and back-end development using AI as a learning partner and build tool</div></div>
+      <div class="ai-card"><div class="ai-card-label">Why It Matters</div><div class="ai-card-text">Revenue. Efficiency. Better work. Understanding AI deeply is the advantage.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- APP -->
 <section id="app">
-  <p class="section-label reveal">Side Project</p>
-  <h2 class="section-heading reveal rd1">Something I'm<br><em>building.</em></h2>
+  <p class="sl reveal">Side Project &middot; Currently in Beta</p>
+  <h2 class="sh reveal d1">Something I<br><em>built.</em></h2>
   <div class="app-grid">
-    <div class="reveal rd2">
-      <div class="app-badge"><span class="app-dot"></span>Currently in Beta</div>
-      <h3 class="app-heading">In the Margin</h3>
-      <p class="app-desc">A reading and annotation tool for people who think actively while they read. In the Margin helps readers capture thoughts, make connections, and actually hold onto what they consume. It's a personal project I've been working on — currently in beta and open to early users.</p>
-      <a href="https://www.inthemargin.app/" target="_blank" class="app-link">Visit inthemargin.app ↗</a>
+    <div class="reveal d2">
+      <div class="app-badge"><span class="app-dot"></span>Beta &middot; Open to Early Users</div>
+      <h3 class="app-h">Margin</h3>
+      <p class="app-tagline">Your thoughts lead. Margin follows.</p>
+      <p class="app-desc">Not a guided journal. Not a productivity tool. Margin is a place to put down what's on your mind — and gently keep going when you're ready. Always current. Always quietly there.<br><br>Margin doesn't just hold your thoughts — it notices what keeps coming up. Open it anytime and you'll find a quiet reflection of what's been on your mind lately. No scores. No analysis. Just a gentle summary, always up to date, always waiting when you're ready.</p>
+      <a href="https://www.inthemargin.app/" target="_blank" class="app-link">Visit inthemargin.app &#8599;</a>
     </div>
-    <div class="app-visual reveal rd3">
+    <div class="app-vis reveal d3">
       <div class="app-screen">
-        <div class="app-bar"><div class="app-dot-sm"></div><div class="app-dot-sm"></div><div class="app-dot-sm"></div></div>
-        <div class="app-line" style="width:80%"></div>
-        <div class="app-line" style="width:60%"></div>
-        <div class="app-line" style="width:88%"></div>
-        <div class="app-line" style="width:44%"></div>
-        <div class="app-line" style="width:75%"></div>
-        <div class="app-line" style="width:55%"></div>
-        <div class="app-screen-text">"Words placed carefully together can mean everything."</div>
+        <div class="app-bar"><div class="app-dot-s"></div><div class="app-dot-s"></div><div class="app-dot-s"></div></div>
+        <div class="app-ln" style="width:72%"></div>
+        <div class="app-ln" style="width:55%"></div>
+        <div class="app-ln" style="width:88%"></div>
+        <div class="app-ln" style="width:40%"></div>
+        <div class="app-ln" style="width:78%"></div>
+        <div class="app-reflection">"You've been thinking about this a lot lately. Want to keep going?"</div>
       </div>
+      <p class="app-cap">Margin's gentle reflection &mdash; always up to date</p>
     </div>
+  </div>
+  <p class="sl reveal" style="margin-bottom:28px">The Story Behind It</p>
+  <div class="pso-grid reveal d1">
+    <div class="pso-cell"><div class="pso-label">The Problem</div><div class="pso-text">Most journaling apps push you through prompts, streaks, and structure. But real thinking doesn't work like that. I kept opening apps and closing them — not because I didn't have things to say, but because nothing felt like a natural place to start.</div></div>
+    <div class="pso-cell"><div class="pso-label">What I Built</div><div class="pso-text">I taught myself how to code and used AI to help me bring the concept to life. That process gave me a real working knowledge of how front-end and back-end software functions — and a deep appreciation for what it takes to build something from nothing.</div></div>
+    <div class="pso-cell"><div class="pso-label">Where It Is Now</div><div class="pso-text">Margin is in beta, and I'm actively in product and market research mode. Testing with early users, gathering feedback, and refining what makes it different from everything else out there.</div></div>
+  </div>
+  <p class="sl reveal" style="margin-top:40px;margin-bottom:20px">What Makes It Different</p>
+  <div class="diff-grid reveal d1">
+    <div class="diff-cell"><div class="diff-title">Your thoughts lead</div><div class="diff-text">No rigid structure, no daily prompt you're obligated to answer. You write what's real, and Margin responds to that.</div></div>
+    <div class="diff-cell"><div class="diff-title">Nothing is forced</div><div class="diff-text">Every prompt, every direction, every next step is optional. You can always just keep writing — or stop when you're done.</div></div>
+    <div class="diff-cell"><div class="diff-title">Built for real life</div><div class="diff-text">Two minutes between meetings. A feeling you can't name. A thought that keeps coming back. Margin works with the time you actually have.</div></div>
+    <div class="diff-cell"><div class="diff-title">Come back anytime</div><div class="diff-text">Entries stay with you. Return days later, add more, go further. Nothing expires. Thinking doesn't have a deadline.</div></div>
   </div>
 </section>
 
+<!-- WRITING -->
 <section id="writing">
-  <p class="section-label reveal">Published Work</p>
-  <h2 class="section-heading reveal rd1">Writing &<br><em>thought leadership.</em></h2>
-  <p class="reveal rd2" style="font-size:14px; color:var(--mid-gray); line-height:1.8; max-width:560px; margin-bottom:8px;">A few pieces I've contributed publicly — covering brand strategy, employee recognition, and communication.</p>
-  <div style="margin-top:40px;">
-    <a href="https://www.bizjournals.com/bizjournals/news/2025/02/24/5-ways-employee-recognition-strengthens-your-brand.html" target="_blank" class="writing-item reveal">
-      <div class="writing-pub">Biz Journals</div>
-      <div class="writing-body">
-        <div class="writing-headline">5 Ways Employee Recognition Strengthens Your Brand</div>
-        <div class="writing-desc">How companies can turn internal culture into external brand equity through recognition programs that actually resonate.</div>
-      </div>
-      <div class="writing-arrow">↗</div>
-    </a>
-    <a href="https://info.bizjournals.com/when-milestones-and-brand-story-work-together" target="_blank" class="writing-item reveal rd1">
-      <div class="writing-pub">Biz Journals</div>
-      <div class="writing-body">
-        <div class="writing-headline">When Milestones and Brand Story Work Together</div>
-        <div class="writing-desc">A look at how organizations can leverage milestone moments to deepen brand narrative and audience connection.</div>
-      </div>
-      <div class="writing-arrow">↗</div>
-    </a>
-    <a href="https://www.figmarketing.com/blog/its-all-about-the-wow-mastering-the-art-of-public-speaking/" target="_blank" class="writing-item reveal rd2">
-      <div class="writing-pub">FIG Marketing</div>
-      <div class="writing-body">
-        <div class="writing-headline">It's All About the Wow: Mastering the Art of Public Speaking</div>
-        <div class="writing-desc">A practical framework for communicating with intention — drawn from experience in financial services, applicable well beyond it.</div>
-      </div>
-      <div class="writing-arrow">↗</div>
-    </a>
+  <p class="sl reveal">Published Work</p>
+  <h2 class="sh reveal d1">Writing &amp;<br><em>thought leadership.</em></h2>
+  <p class="reveal d2" style="font-size:14px;color:var(--mid-gray);line-height:1.8;max-width:560px;margin-bottom:8px">A few pieces I've contributed publicly &mdash; covering brand strategy, employee recognition, and communication.</p>
+  <div style="margin-top:40px">
+    <a href="https://www.bizjournals.com/bizjournals/news/2025/02/24/5-ways-employee-recognition-strengthens-your-brand.html" target="_blank" class="wi reveal"><div class="wi-pub">Biz Journals</div><div class="wi-body"><div class="wi-head">5 Ways Employee Recognition Strengthens Your Brand</div><div class="wi-desc">How companies can turn internal culture into external brand equity through recognition programs that actually resonate.</div></div><div class="wi-arr">&#8599;</div></a>
+    <a href="https://info.bizjournals.com/when-milestones-and-brand-story-work-together" target="_blank" class="wi reveal d1"><div class="wi-pub">Biz Journals</div><div class="wi-body"><div class="wi-head">When Milestones and Brand Story Work Together</div><div class="wi-desc">A look at how organizations can leverage milestone moments to deepen brand narrative and audience connection.</div></div><div class="wi-arr">&#8599;</div></a>
+    <a href="https://www.figmarketing.com/blog/its-all-about-the-wow-mastering-the-art-of-public-speaking/" target="_blank" class="wi reveal d2"><div class="wi-pub">FIG Marketing</div><div class="wi-body"><div class="wi-head">It's All About the Wow: Mastering the Art of Public Speaking</div><div class="wi-desc">A practical framework for communicating with intention — drawn from financial services, applicable well beyond it.</div></div><div class="wi-arr">&#8599;</div></a>
   </div>
 </section>
 
+<!-- SPEAKING -->
 <section id="speaking">
-  <div class="speaking-grid">
+  <div class="speak-grid">
     <div>
-      <p class="section-label reveal">Speaking & Mentorship</p>
-      <h2 class="section-heading reveal rd1">Giving back<br>to the<br><em>next wave.</em></h2>
-      <p class="reveal rd2" style="font-size:14px; color:var(--mid-gray); line-height:1.85; max-width:420px; margin-top:20px;">
-        Something I genuinely enjoy is working with students and early-career professionals navigating the transition from school to work. I've had the chance to speak in classrooms, at marketing chapter events, and at an international innovation festival in Paris. I don't have all the answers — but I'm glad to share what I've learned from trying.
-      </p>
-      <div style="margin-top:36px;" class="reveal rd3">
-        <div class="topic-item"><span class="topic-dash">—</span><span class="topic-text">Confident humility as a framework for career growth</span></div>
-        <div class="topic-item"><span class="topic-dash">—</span><span class="topic-text">Preparing for the real world after graduation</span></div>
-        <div class="topic-item"><span class="topic-dash">—</span><span class="topic-text">Leveraging LinkedIn from student to professional</span></div>
-        <div class="topic-item"><span class="topic-dash">—</span><span class="topic-text">Social entrepreneurship & systems thinking in higher education</span></div>
-        <div class="topic-item"><span class="topic-dash">—</span><span class="topic-text">1:1 mentorship and practice interview coaching</span></div>
+      <p class="sl reveal">Speaking &amp; Mentorship</p>
+      <h2 class="sh reveal d1">Giving back<br>to the<br><em>next wave.</em></h2>
+      <p class="reveal d2" style="font-size:14px;color:var(--mid-gray);line-height:1.85;max-width:420px;margin-top:20px">Something I genuinely enjoy is working with students and early-career professionals navigating the transition from school to work. I've had the chance to speak in classrooms, at marketing chapter events, and at an international innovation festival in Paris. I don't have all the answers — but I'm glad to share what I've learned from trying.</p>
+      <div style="margin-top:36px" class="reveal d3">
+        <div class="topic-i"><span class="topic-dash">&mdash;</span><span class="topic-t">Confident humility as a framework for career growth</span></div>
+        <div class="topic-i"><span class="topic-dash">&mdash;</span><span class="topic-t">Preparing for the real world after graduation</span></div>
+        <div class="topic-i"><span class="topic-dash">&mdash;</span><span class="topic-t">Leveraging LinkedIn from student to professional</span></div>
+        <div class="topic-i"><span class="topic-dash">&mdash;</span><span class="topic-t">Social entrepreneurship &amp; systems thinking in higher education</span></div>
+        <div class="topic-i"><span class="topic-dash">&mdash;</span><span class="topic-t">1:1 mentorship and practice interview coaching</span></div>
       </div>
     </div>
-    <div class="reveal rd3">
-      <p class="section-label" style="margin-bottom:16px;">Venues & Events</p>
-      <div class="venue-item">
-        <span class="venue-icon">◆</span>
-        <div>Learning Planet Festival 2022<span class="venue-sub">Social Entrepreneurship in Higher Ed & Systems Thinking · Paris, France</span></div>
-      </div>
-      <div class="venue-item">
-        <span class="venue-icon">◆</span>
-        <div>Wingate University<span class="venue-sub">Guest Lecturer · Marketing & Business Classes</span></div>
-      </div>
-      <div class="venue-item">
-        <span class="venue-icon">◆</span>
-        <div>UNC Charlotte<span class="venue-sub">Guest Speaker · Student Events</span></div>
-      </div>
-      <div class="venue-item">
-        <span class="venue-icon">◆</span>
-        <div>American Marketing Association<span class="venue-sub">Chapter Speaker & Mentor</span></div>
-      </div>
-      <div class="venue-item">
-        <span class="venue-icon">◆</span>
-        <div>Collegiate Practice Interviews<span class="venue-sub">Interview Panelist & Coach</span></div>
-      </div>
+    <div class="reveal d3">
+      <p class="sl" style="margin-bottom:16px">Venues &amp; Events</p>
+      <div class="venue-i"><span class="venue-ic">&#9670;</span><div>Learning Planet Festival 2022<span class="venue-s">Social Entrepreneurship in Higher Ed &amp; Systems Thinking &middot; Paris, France</span></div></div>
+      <div class="venue-i"><span class="venue-ic">&#9670;</span><div>Wingate University<span class="venue-s">Guest Lecturer &middot; Marketing &amp; Business Classes</span></div></div>
+      <div class="venue-i"><span class="venue-ic">&#9670;</span><div>UNC Charlotte<span class="venue-s">Guest Speaker &middot; Student Events</span></div></div>
+      <div class="venue-i"><span class="venue-ic">&#9670;</span><div>American Marketing Association<span class="venue-s">Chapter Speaker &amp; Mentor</span></div></div>
+      <div class="venue-i"><span class="venue-ic">&#9670;</span><div>Collegiate Practice Interviews<span class="venue-s">Interview Panelist &amp; Coach</span></div></div>
     </div>
   </div>
 </section>
 
+<!-- CREATIVE / BEYOND WORK -->
 <section id="creative">
-  <p class="section-label reveal">Beyond the Desk</p>
-  <h2 class="section-heading reveal rd1">A fuller<br><em>picture.</em></h2>
-  <p class="creative-intro reveal rd2">Work is one part of who I am. Outside of it, I write poetry, record music, and stay curious about the world. I'm including this here not because it's professionally relevant — but because I think the way someone spends their time outside of work says something about how they think inside of it.</p>
-
-  <div class="creative-cols reveal rd3">
+  <p class="sl reveal">Beyond the Desk</p>
+  <h2 class="sh reveal d1">A fuller<br><em>picture.</em></h2>
+  <p class="creative-intro reveal d2">Work is one part of who I am. Outside of it, I write poetry, record music, and stay curious about the world. I'm including this here not because it's professionally relevant — but because I think the way someone spends their time outside of work says something about how they think inside of it.</p>
+  <div class="cc reveal d3">
     <div class="music-card">
-      <div class="music-eyebrow">Singer · Songwriter · Multi-Instrumentalist</div>
-      <div class="music-title">Elara Laine</div>
-      <div class="music-alias">Recording alias</div>
-      <div class="music-desc">I've been writing and playing music most of my life. Released my first single under the alias Elara Laine — folk-influenced, a little introspective, entirely personal. More in the works.</div>
-      <a href="https://open.spotify.com/track/7l2VB1yTQ3ye6beRdo2wl2" target="_blank" class="spotify-btn">
-        <svg class="sicon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+      <div class="me">Singer &middot; Songwriter &middot; Multi-Instrumentalist</div>
+      <div class="mt">Elara Laine</div>
+      <div class="ma">Recording alias</div>
+      <div class="md">I've been writing and playing music most of my life. Released my first single under the alias Elara Laine — folk-influenced, a little introspective, entirely personal. More in the works.</div>
+      <a href="https://open.spotify.com/track/7l2VB1yTQ3ye6beRdo2wl2" target="_blank" class="spotify">
+        <svg class="si" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
         Listen on Spotify
       </a>
-      <div style="margin-top:22px;"><span class="itag">Guitar</span><span class="itag">Piano</span><span class="itag">Vocals</span><span class="itag">Songwriting</span></div>
+      <div style="margin-top:22px"><span class="itag">Guitar</span><span class="itag">Piano</span><span class="itag">Vocals</span><span class="itag">Songwriting</span></div>
     </div>
-    <div style="background:var(--cream); padding:40px;">
-      <p class="section-label" style="margin-bottom:20px;">On Writing</p>
-      <p style="font-family:var(--serif); font-size:18px; font-weight:300; line-height:1.75; color:var(--charcoal); margin-bottom:18px;">Poetry is a different kind of thinking than what I do for work. That contrast is part of why I keep doing it.</p>
-      <p style="font-size:13px; color:var(--mid-gray); line-height:1.8;">The poems below are personal — things I've been trying to process or articulate. I'm sharing them here because a portfolio felt like the right place to show the whole person, not just the resume version. They're honest, and that's about all I'd say to frame them.</p>
+    <div style="background:var(--cream);padding:40px">
+      <p class="sl" style="margin-bottom:20px">On Writing</p>
+      <p style="font-family:var(--serif);font-size:18px;font-weight:300;line-height:1.75;color:var(--charcoal);margin-bottom:18px">Marketing is about finding clarity in creativity. Poetry is where I let the abstract breathe. The two inform each other more than I expected.</p>
+      <p style="font-size:13px;color:var(--mid-gray);line-height:1.8">Writing campaigns and writing poems both start in the same place — a feeling, an observation, something that doesn't quite have language yet. Working through that in poetry has made me better at finding the right words for the work I do professionally. The constraint of form teaches you to be precise. The freedom of it teaches you to stay honest.</p>
     </div>
   </div>
-
-  <div style="margin-top:60px;">
-    <p class="section-label reveal">Poetry & Prose</p>
-    <p class="poetry-note reveal rd1">A collection written between 2024 and 2025. Click any card to read the full piece.</p>
-    <div class="poems-grid reveal rd2">
-      <div class="poem-card" onclick="openPoem('alive')">
-        <div class="poem-title">I Am Alive</div>
-        <div class="poem-excerpt">"For the first time, I don't wait and wonder for the sun. I don't sleep away the moon."</div>
-        <div class="poem-date">March 2024</div>
-      </div>
-      <div class="poem-card" onclick="openPoem('patchwork')">
-        <span class="prose-tag">Prose</span>
-        <div class="poem-title">Find Me in Pieces of Patchwork</div>
-        <div class="poem-excerpt">"I have never been fearful of death. I've spent far more time fearing life."</div>
-        <div class="poem-date">September 2024</div>
-      </div>
-      <div class="poem-card" onclick="openPoem('conditions')">
-        <div class="poem-title">No Conditions</div>
-        <div class="poem-excerpt">"No conditions — I'll love you through it all. Even from the opposite end of the earth."</div>
-        <div class="poem-date">August 2024</div>
-      </div>
-      <div class="poem-card" onclick="openPoem('wire')">
-        <span class="prose-tag">Prose</span>
-        <div class="poem-title">Edge of the Wire</div>
-        <div class="poem-excerpt">"Like wires dangling from a receiver — sparks of danger and light flicker with the choices we make."</div>
-        <div class="poem-date">2024</div>
-      </div>
-      <div class="poem-card" onclick="openPoem('missive')">
-        <div class="poem-title">Missive Receipts</div>
-        <div class="poem-excerpt">"Dance with me in quantum fields where particles never part. Destined entanglement, you were mine from the start."</div>
-        <div class="poem-date">2024</div>
-      </div>
-      <div class="poem-card" onclick="openPoem('burn')">
-        <div class="poem-title">The Burn is Blue</div>
-        <div class="poem-excerpt">"My deep, slow ethos, so full of resonance; where duality finds comfort in unity."</div>
-        <div class="poem-date">July 2025</div>
-      </div>
-      <div class="poem-card" onclick="openPoem('known')">
-        <span class="prose-tag">Prose</span>
-        <div class="poem-title">So Gently Known</div>
-        <div class="poem-excerpt">"How is it that you, with the split of a breath, pluck my spinning words and lay in their place a stillness I've never known."</div>
-        <div class="poem-date">July 2025</div>
-      </div>
-      <div class="poem-card" onclick="openPoem('speck')">
-        <div class="poem-title">Speck Under a Guardrail</div>
-        <div class="poem-excerpt">"I too am just a speck, unknown to the world. But I am known to my world."</div>
-        <div class="poem-date">March 2024</div>
-      </div>
-      <div class="poem-card" onclick="openPoem('poetry')">
-        <div class="poem-title">Poetry</div>
-        <div class="poem-excerpt">"Words themselves mean nothing. Sentences, placed carefully together, can mean everything."</div>
-        <div class="poem-date">March 2024</div>
-      </div>
+  <div style="margin-top:60px">
+    <p class="sl reveal">A Few Poems</p>
+    <p class="poetry-note reveal d1">A small selection. Click any to read the full piece.</p>
+    <div class="poems-grid reveal d2">
+      <div class="pc" onclick="openPoem('alive')"><div class="pt">I Am Alive</div><div class="pe">"For the first time, I don't wait and wonder for the sun. I don't sleep away the moon."</div><div class="pd">March 2024</div></div>
+      <div class="pc" onclick="openPoem('missive')"><div class="pt">Missive Receipts</div><div class="pe">"Dance with me in quantum fields where particles never part. Destined entanglement, you were mine from the start."</div><div class="pd">2024</div></div>
+      <div class="pc" onclick="openPoem('known')"><span class="prose-tag">Prose</span><div class="pt">So Gently Known</div><div class="pe">"How is it that you, with the split of a breath, pluck my spinning words and lay in their place a stillness I've never known."</div><div class="pd">July 2025</div></div>
     </div>
   </div>
 </section>
 
-<div class="poem-modal-overlay" id="poem-modal" onclick="closePoemIfOverlay(event)">
-  <div class="poem-modal">
-    <button class="pm-close" onclick="closePoem()">×</button>
-    <div class="pm-title" id="modal-title"></div>
-    <div class="pm-date" id="modal-date"></div>
-    <div class="pm-body" id="modal-body"></div>
+<!-- POEM MODAL -->
+<div class="mo" id="poem-modal" onclick="closePoemOverlay(event)">
+  <div class="mm">
+    <button class="mc" onclick="closePoem()">&#215;</button>
+    <div class="mti" id="modal-title"></div>
+    <div class="mda" id="modal-date"></div>
+    <div class="mbo" id="modal-body"></div>
   </div>
 </div>
 
+<!-- CONTACT -->
 <section id="contact">
-  <h2 class="contact-heading reveal">Let's<br><em>connect.</em></h2>
-  <p class="contact-sub reveal rd1">Whether you're a recruiter, a hiring manager, a student looking for a mentor, or someone who wants to talk marketing and systems — feel free to reach out.</p>
-  <a href="mailto:clevenger.cori@gmail.com" class="contact-email reveal rd2">clevenger.cori@gmail.com</a>
-  <div class="contact-links reveal rd3">
-    <a href="https://www.inthemargin.app/" target="_blank" class="clink">In the Margin App</a>
+  <h2 class="ch reveal">Let's<br><em>connect.</em></h2>
+  <p class="csub reveal d1">Whether you're a recruiter, a hiring manager, a student looking for a mentor, or someone who wants to talk marketing and systems &mdash; feel free to reach out.</p>
+  <a href="mailto:clevenger.cori@gmail.com" class="cemail reveal d2">clevenger.cori@gmail.com</a>
+  <div class="clinks reveal d3">
+    <a href="https://www.inthemargin.app/" target="_blank" class="clink">Margin App</a>
     <a href="https://open.spotify.com/track/7l2VB1yTQ3ye6beRdo2wl2" target="_blank" class="clink">Elara Laine on Spotify</a>
     <a href="https://www.bizjournals.com/bizjournals/news/2025/02/24/5-ways-employee-recognition-strengthens-your-brand.html" target="_blank" class="clink">Published Work</a>
     <a href="tel:9196222177" class="clink">(919) 622-2177</a>
@@ -560,55 +594,74 @@
 </section>
 
 <footer>
-  <span class="footer-name">Corinne Clevenger</span>
-  <span class="footer-copy">Charlotte, NC · Open to Remote · © 2025</span>
+  <span class="fn">Corinne Clevenger</span>
+  <span class="fc">Charlotte, NC &middot; Open to Remote &middot; &copy; 2025</span>
 </footer>
 
 <script>
-const poems = {
-  alive:{title:"I Am Alive",date:"March 18, 2024",body:`To love, to be seen, to cherish, to be valued.\nFor living is only a mindset until it's not.\nI am living, I am breathing, I am crying,\nI hurt, I laugh, I sing.\n\nFor the first time, I don't wait and wonder for the sun.\nI don't sleep away the moon.\nI take on the challenge of rising, of falling,\nof spinning with confusion.\n\nI yearn for the feelings of fulfillment,\nthe empty, and the stagnant.\nI am seeing the sun.\nI am seeing the moon.\nAnd I am seeing everything else in between.`},
-  patchwork:{title:"Find Me in Pieces of Patchwork",date:"September 9, 2024",body:`I have never been fearful of death. In honest truth, I've spent far more time fearing life than fearing the thought of my soul departing this earth. When you put thought to it, death is something that I actually may never truly experience — only life, up until the moment it ceases pulse. And perhaps, in that moment, there will be something beyond, waiting for me: a place where friends meet, where pets reunite, a place where family members become a strong-held unit once more — a landscape doused in nostalgia and familiarity.\n\nAs my physical being releases the life within, my greatest fear is not for myself, but for those I leave behind. The thought of not being able to comfort those dearest to me — unable to hold my mother's hand, to sit through the night and console a friend, to give my lover one last kiss — this is the ache I dread most. I won't want you to grieve for me. I will eventually become only a memory, a piece of myself I hope you keep, but not too tightly. Let my absence not cloud your days with sorrow but lift you toward joy and new beginnings.\n\nI pray you'll remember me always, yes, but let that memory carry you forward. Through the trials and tribulations of the life that I left, take my mistakes and learn from them. Let them guide you. Take my pain and weave it into something beautiful, like threads forming a patchwork quilt resilient to last and withstand. For I am only one piece of the puzzle. With my curves strong, and my points sharp, don't allow the void to consume. Allow my memory to be just as strong, and just as sharp. That's what I pray for.`},
-  conditions:{title:"No Conditions",date:"August 12, 2024",body:`I'd like to be blissfully ignorant of the noise,\nBut it's loud enough to protect my heart from the hurt.\nThree words big enough to avoid,\nOne phrase strong enough to feel in every nerve.\n\nYour laugh envelops me in your warmth,\nAn embrace so beautiful, too unique to forget.\nA present rich in love, a future born to mourn,\nTicking time before the ember meets the mouth of the cigarette.\n\nNo conditions —\nI'll love you through it all.\nEven from the opposite end of the earth,\nA timeless tale I'll read just to recall.`},
-  wire:{title:"Edge of the Wire",date:"2024",body:`Like wires dangling from a receiver, barely brushing the puddle below, sparks of danger and light flicker with the choices we make, each fighting to stay electrified. No choice is wrong, for there's no turning back.\n\nThe guttural pings still echo, slicing deep into places we can't reach to destroy but are forced to acknowledge — guilt, sadness, anger, and regret all battling for their place at the table.\n\nTheir voices rise above the rest, trying to drown out their cries as they cling to life. And once joy slips away, she struggles to regain her grip on reality, clawing and fighting until she has no strength remaining.\n\nEach hook and nail grows deeper, stronger, and poised to allow despair to climb, while the light slips, growing no more than a stagnant shadow.\n\nOnce the sheathes ice over, dangling intricacies through what used to be a system driving you forward, they start to quiet, grow numb, hard, and barren.\n\nAnd in that stillness, it may begin to feel okay, for numbness is better than the breath snatched from your lungs and the drips falling from your fingertips.`},
-  missive:{title:"Missive Receipts",date:"2024",body:`Let's run away from our problems.\nWe have a list to disavow.\nTake this time to play our cards right,\nFor as long as the clock allows.\n\nYour hand in mine 'till morning light,\nWe were so naïve and so blithe.\nJust two lonely souls found intertwined;\nThe ashes fall down out of spite.\n\nWith seashells and cigarettes, you bring the world together.\nUnder sunsets, create silhouettes, still fighting off the pressure.\nDance with me in quantum fields where particles never part.\nDestined entanglement, you were mine from the very start.\n\nRead these words as my missive,\nJotted down on stained receipts.\nYou found me here, reminiscing,\nStrumming chords on dusty strings.\n\nCompletely servile to the feelings,\nEmotions too hard to control.\nI look to you to find the reason;\nYou look to God to guide you home.`},
-  burn:{title:"The Burn is Blue",date:"July 29, 2025",body:`My deep, slow ethos, so full of resonance;\nWhere duality finds comfort in unity,\nAnd intimacy finds solace in silence.`},
-  known:{title:"So Gently Known",date:"July 15, 2025",body:`How is it that you, with the split of a breath, pluck my spinning words and carefully lay in their place a stillness I've never known.\n\nNo, not the stillness of stagnancy, but the stillness that quiets the most restless and chaotic.\n\nI sit here, pen in hand, searching, praying to find something to say, to realize the stillness I once wrote in, laced with hopelessness, has softened.\n\nYou carefully unwrap the hurt, the trembling parts of me I kept hidden from myself and others for so long, and without effort, just with a dart of your golden eyes, you return them transformed.\n\nYou view me not as fractured, but see me as whole, and though I can't comprehend, somehow, I do. Because it's you.\n\nAnd in you, I find understanding, not just within my own being, but in everything I never thought could be so gently known.`},
-  speck:{title:"Speck Under a Guardrail",date:"March 19, 2024",body:`Standing over the guardrail, looking down\nThe specks of metal, rubber, and oil fly under\nLike a moment of time, gone within a second\nEach being trapped inside\nLiving their own life\nThinking their own thoughts\nDriving to a destination that could be their last\nOr their new beginning.\n\nWithin a fleeting moment of time\nThat may be the first and last time you encounter that soul\nLeft to wonder who it contained\nWhat they've been through\nWhat they will face.\n\nIn these moments, I'm left to wonder,\nUnable to articulate the feeling\nOf knowing that I too am just a speck\nUnknown to the world.\n\nBut I am known to my world.`},
-  poetry:{title:"Poetry",date:"March 18, 2024",body:`Some may say more boring than a song.\nThe lack of musical notes may not sway the emotional\npulls as far or as wide,\n\nBut I say it's more.\nIt's the inner workings of a human monologue\nOr dialogue,\nSpliced into beautifully articulated letters,\nFormed words,\nFormed sentences,\nFormed thoughts,\nCrafted from the mind of one's own.\n\nWords themselves mean nothing.\nLetters are just carefully marked lines and curves.\nSentences, placed carefully together, can dictate\nmeanings so great it takes\nSeconds,\nMinutes,\nHours,\nDays to ponder.\n\nThey could mean nothing, or they could mean everything.`}
+var poems={
+  alive:{title:"I Am Alive",date:"March 18, 2024",body:"To love, to be seen, to cherish, to be valued.\nFor living is only a mindset until it's not.\nI am living, I am breathing, I am crying,\nI hurt, I laugh, I sing.\n\nFor the first time, I don't wait and wonder for the sun.\nI don't sleep away the moon.\nI take on the challenge of rising, of falling,\nof spinning with confusion.\n\nI yearn for the feelings of fulfillment,\nthe empty, and the stagnant.\nI am seeing the sun.\nI am seeing the moon.\nAnd I am seeing everything else in between."},
+  missive:{title:"Missive Receipts",date:"2024",body:"Let's run away from our problems.\nWe have a list to disavow.\nTake this time to play our cards right,\nFor as long as the clock allows.\n\nYour hand in mine 'till morning light,\nWe were so naive and so blithe.\nJust two lonely souls found intertwined;\nThe ashes fall down out of spite.\n\nWith seashells and cigarettes, you bring the world together.\nUnder sunsets, create silhouettes, still fighting off the pressure.\nDance with me in quantum fields where particles never part.\nDestined entanglement, you were mine from the very start.\n\nRead these words as my missive,\nJotted down on stained receipts.\nYou found me here, reminiscing,\nStrumming chords on dusty strings.\n\nCompletely servile to the feelings,\nEmotions too hard to control.\nI look to you to find the reason;\nYou look to God to guide you home."},
+  known:{title:"So Gently Known",date:"July 15, 2025",body:"How is it that you, with the split of a breath, pluck my spinning words and carefully lay in their place a stillness I've never known.\n\nNo, not the stillness of stagnancy, but the stillness that quiets the most restless and chaotic.\n\nI sit here, pen in hand, searching, praying to find something to say, to realize the stillness I once wrote in, laced with hopelessness, has softened.\n\nYou carefully unwrap the hurt, the trembling parts of me I kept hidden from myself and others for so long, and without effort, just with a dart of your golden eyes, you return them transformed.\n\nYou view me not as fractured, but see me as whole, and though I can't comprehend, somehow, I do. Because it's you.\n\nAnd in you, I find understanding, not just within my own being, but in everything I never thought could be so gently known."}
 };
 
-function openPoem(k){const p=poems[k];document.getElementById('modal-title').textContent=p.title;document.getElementById('modal-date').textContent=p.date;document.getElementById('modal-body').textContent=p.body;document.getElementById('poem-modal').classList.add('open');document.body.style.overflow='hidden';}
-function closePoem(){document.getElementById('poem-modal').classList.remove('open');document.body.style.overflow='';}
-function closePoemIfOverlay(e){if(e.target===document.getElementById('poem-modal'))closePoem();}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closePoem();});
+function openPoem(k){
+  var p=poems[k];
+  if(!p) return;
+  document.getElementById('modal-title').textContent=p.title;
+  document.getElementById('modal-date').textContent=p.date;
+  document.getElementById('modal-body').textContent=p.body;
+  document.getElementById('poem-modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closePoem(){
+  document.getElementById('poem-modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+function closePoemOverlay(e){
+  if(e.target===document.getElementById('poem-modal')) closePoem();
+}
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') closePoem(); });
 
-window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>60));
+window.addEventListener('scroll',function(){
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);
+});
 
 function animateCounter(card){
-  if(card.dataset.done)return;
+  if(card.dataset.done) return;
   card.dataset.done='1';
-  const target=parseFloat(card.dataset.target);
-  const fmt=card.dataset.fmt;
-  const valEl=card.querySelector('.stat-val');
-  if(!valEl)return;
-  const duration=1800, steps=60, interval=duration/steps, inc=target/steps;
-  let cur=0;
-  const t=setInterval(()=>{
+  var target=parseFloat(card.dataset.target);
+  var fmt=card.dataset.fmt;
+  var valEl=card.querySelector('.sv');
+  if(!valEl) return;
+  var duration=1800, steps=60, interval=duration/steps, inc=target/steps, cur=0;
+  var t=setInterval(function(){
     cur=Math.min(cur+inc,target);
-    let display;
-    if(fmt==='comma') display=Math.round(cur).toLocaleString();
-    else display=Math.round(cur);
+    var display=(fmt==='comma')?Math.round(cur).toLocaleString():Math.round(cur);
     valEl.textContent=display;
-    if(cur>=target){clearInterval(t);card.classList.add('counted');}
+    if(cur>=target){ clearInterval(t); card.classList.add('counted'); }
   },interval);
 }
 
-const revealObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObs.unobserve(e.target);}});},{threshold:0.1});
-document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+var revealObs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){ e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+  });
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(function(el){ revealObs.observe(el); });
 
-const statsObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.stat-card').forEach((c,i)=>setTimeout(()=>animateCounter(c),i*140));statsObs.unobserve(e.target);}});},{threshold:0.15});
-const sg=document.getElementById('stats-grid');
-if(sg)statsObs.observe(sg);
+var statsObs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.sc').forEach(function(card,i){
+        setTimeout(function(){ animateCounter(card); },i*140);
+      });
+      statsObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.15});
+var sg=document.getElementById('stats-grid');
+if(sg) statsObs.observe(sg);
 </script>
 </body>
 </html>
